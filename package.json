@@ -1,0 +1,26 @@
+{
+  "name": "receipe_blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ns8279/Receipe_Blog.git"
+  },
+  "author": "Nirupama, Jakob, Daniel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ns8279/Receipe_Blog/issues"
+  },
+  "homepage": "https://github.com/ns8279/Receipe_Blog#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.13"
+  }
+}
