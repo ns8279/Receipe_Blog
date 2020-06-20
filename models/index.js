@@ -21,6 +21,6 @@ Category.hasMany(Recipe);
 Recipe.hasMany(Ingredient);
 
 //Ingredient
-Ingredient.belongsToMany(Recipe);
+//Ingredient.belongsToMany(Recipe);
 
 module.exports = {User, Recipe, Ingredient, Comment, Category}

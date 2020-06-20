@@ -15,12 +15,6 @@ Recipe.init(
             autoIncrement: true
         },
         
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            
-        },
-
         recipe_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -53,14 +47,18 @@ Recipe.init(
         },
 
         recipe_method: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false
         },
 
-        pic: { 
-            type: Sequelize.BLOB,
-            allowNull: true
+        total_calories: {
+            type: DataTypes.STRING,
         }
+
+        // pic: { 
+        //     type: Sequelize.BLOB,
+        //     allowNull: true
+        // }
   
     },
 
