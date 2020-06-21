@@ -44,7 +44,7 @@ router.get('/:id', (req, res) => {
         })
 });
 
-router.get('/', withAuth, (req, res) => {
+router.put('/', withAuth, (req, res) => {
     if (req.session) {
         Ingredient.create({
                 recipe_id: req.body.recipe_id,
