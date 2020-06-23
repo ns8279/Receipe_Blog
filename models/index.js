@@ -16,6 +16,7 @@ Recipe.hasMany(Comment);
 
 //Category
 Category.hasMany(Recipe);
+Recipe.belongsTo(Category);
 
 //Recipe
 Recipe.hasMany(Ingredient);

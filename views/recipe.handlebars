@@ -1,0 +1,54 @@
+<div class = "container">
+    <div id = "recipe" class = "well">
+        <div class ="row">
+            <div class ="col-md-12 mx-5 my-5">
+                <h2>{{recipe.recipe_name}}</h2>
+                <a href ="#" class="save btn btn-primary">Save</a>
+                <a href ="/" class="save btn btn-primary">Home</a>
+                <hr>
+                <div class = "row">
+                    <div class = "col-md-4 mx-5 my-5">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-header text-center">
+                                Ingredients
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                {{#each recipe.ingredients}}
+                                <li class="list-group-item">{{ingredient_name}} : {{quantity}}</li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class = "col-md-4 mx-5 my-5">
+                        <div class = "card" style="width: 18rem;">
+                            <div class = "card-header text-center">
+                                Time Required and Calories
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Prep time : {{recipe.prep_time}}</li>
+                                <li class="list-group-item">Cook time : {{recipe.cook_time}}</li>
+                                <li class="list-group-item">Calories : {{recipe.total_calories}}</li>
+                                <li class="list-group-item">Date : {{format_date recipe.created_at}}</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class = "row">
+                    <div class = "col-md-8 mx-5 my-3">
+                        <div class = "card">
+                            <div class ="card-header">Method</div>
+                            <div class ="card-body">
+                                <li>{{recipe.recipe_method}}</li>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
+

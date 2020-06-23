@@ -7,11 +7,11 @@ router.get('/', (req, res) => {
     Recipe.findAll({
             attributes: [
                 'id',
-                'title',
+                //'title',
                 'recipe_name',
                 'prep_time',
                 'cook_time',
-                'pic',
+                //'pic',
                 'created_at'
             ],
             order: [
@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
                     attributes: [
                         'id',
                         'comment_text',
-                        'post_id',
+                        'recipe_id',
                         'user_id',
                         'created_at'
                     ],
@@ -44,10 +44,10 @@ router.get('/', (req, res) => {
                         'quantity',
                         'created_at'
                     ],
-                    include: {
-                        model: User,
-                        attributes: ['username']
-                    }
+                    // include: {
+                    //     model: User,
+                    //     attributes: ['username']
+                    // }
                 }
             ]
         })
@@ -65,11 +65,11 @@ router.get('/:id', (req, res) => {
             },
             attributes: [
                 'id',
-                'title',
+                //'title',
                 'recipe_name',
                 'prep_time',
                 'cook_time',
-                'pic',
+                //'pic',
                 'created_at'
             ],
             include: [{
@@ -84,18 +84,18 @@ router.get('/:id', (req, res) => {
                         'ingredient_name',
                         'quantity',
                         'created_at'
-                    ],
-                    include: {
-                        model: User,
-                        attributes: ['username']
-                    }
+                    ]
+                    // include: {
+                    //     model: User,
+                    //     attributes: ['username']
+                    // }
                 },
                 {
                     model: Comment,
                     attributes: [
                         'id',
                         'comment_text',
-                        'post_id',
+                        'recipe_id',
                         'user_id',
                         'created_at'
                     ],
@@ -108,7 +108,7 @@ router.get('/:id', (req, res) => {
         })
         .then(dbRecipeData => {
             if (!dbRecipeData) {
-                res.status(404).json({ message: 'There was no post found with this id' });
+                res.status(404).json({ message: 'There was no recipe found with this id' });
                 return;
             }
             res.json(dbRecipeData);
@@ -122,7 +122,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', withAuth, (req, res) => {
     Recipe.create({
-            title: req.body.title,
+            //title: req.body.title,
             recipe_name: req.body.recipe_name,
             prep_time: req.body.prep_time,
             cook_time: req.body.cook_time,
@@ -138,7 +138,7 @@ router.post('/', withAuth, (req, res) => {
 
 router.put('/:id', withAuth, (req, res) => {
     Recipe.update({
-            title: req.body.title,
+            //title: req.body.title,
             recipe_name: req.body.recipe_name,
             prep_time: req.body.prep_time,
             cook_time: req.body.cook_time,
@@ -150,7 +150,7 @@ router.put('/:id', withAuth, (req, res) => {
         })
         .then(dbRecipeData => {
             if (!dbRecipeData) {
-                res.status(404).json({ message: 'There was no post found with this id' });
+                res.status(404).json({ message: 'There was no recipe found with this id' });
                 return;
             }
             res.json(dbRecipeData);
@@ -169,7 +169,7 @@ router.delete('/:id', withAuth, (req, res) => {
         })
         .then(dbRecipeData => {
             if (!dbRecipeData) {
-                res.status(404).json({ message: 'There was no post found with this id' });
+                res.status(404).json({ message: 'There was no recipe found with this id' });
                 return;
             }
             res.json(dbRecipeData);
