@@ -14,10 +14,11 @@ router.get('/', (req, res) => {
             order: [
                 ['created_at', 'DESC']
             ],
-            include: [{
-                    model: User,
-                    attributes: ['username']
-                },
+            include: [
+                // {
+                //     model: User,
+                //     attributes: ['username']
+                // },
                 {
                     model: Recipe,
                     attributes: ['recipe_id']

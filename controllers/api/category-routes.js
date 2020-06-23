@@ -4,7 +4,14 @@ const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
-    Category.findAll({})
+    Category.findAll({
+        include: [
+            {
+              model: Recipe,
+              attributes: ['id', 'recipe_name', 'prep_time', 'cook_time'] //the selected attributes will be displayed in the GET Route
+            }
+          ]
+    })
         .then(dbCategoryData => res.json(dbCategoryData))
         .catch(err => {
             console.log(err);
@@ -16,9 +23,34 @@ router.get('/:id', (req, res) => {
     Category.findOne({
             where: {
                 id: req.params.id
-            }
+            },
+            include: [
+                {
+                  model: Recipe,
+                  attributes: ['id', 'recipe_name', 'prep_time', 'cook_time'] //the selected attributes will be displayed in the GET Route
+                }
+              ]
         })
         .then(dbCategoryData => res.json(dbCategoryData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
+router.get('/:category_name', (req, res) => {
+    Category.findOne({
+        where:{
+            category_name: req.params.category_name
+        },
+        include: [
+            {
+              model: Recipe,
+              attributes: ['id', 'recipe_name', 'prep_time', 'cook_time'] //the selected attributes will be displayed in the GET Route
+            }
+          ]
+    })
+    .then(dbCategoryData => res.json(dbCategoryData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);

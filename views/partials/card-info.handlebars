@@ -1,0 +1,12 @@
+<div class="card text-white bg-info mb-3 mx-5 my-5" style="width: 18rem;">
+        <div class="card-header bg-dark text-white">{{user.username}}</div> 
+                <div class="card-body text-white">
+                    <h5 class="card-title">{{recipe_name}}</h5>
+                    <p class="card-text">{{category.category_name}}</p>
+                    <a href="/recipe/{{id}}" class="btn btn-dark">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+                    <a href="/recipes/{{id}}" class="btn btn-dark"  data-toggle=" modal" data-target="#exampleModalLong">Recipe</a>
+                    <div class="card-footer">
+                        <small class="text-white">Last updated {{format_date created_at}}</small>
+                    </div>
+        </div>
+</div>

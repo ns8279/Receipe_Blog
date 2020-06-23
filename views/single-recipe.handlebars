@@ -1,0 +1,25 @@
+{{> card-info recipe}}
+
+
+{{#if loggedIn}}
+<form class ="comment-form mx-5 my-5">
+  <div class="form-group">
+    <textarea name ="comment-body"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">add comment</button>
+</form>
+{{/if}}
+
+
+{{#each recipe.comments}}
+<div class="card text-white bg-dark w-75 mx-5 my-5">
+  <div class="card-body">
+    <h5 class="card-title text-white">{{user.username}} on {{format_date created_at}}</h5>
+    <p class="card-text text-white">{{comment_text}}</p>
+  </div>
+</div>
+{{/each}}
+
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+{{/if}}

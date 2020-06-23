@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node server.js",
     "seed": "node seeds/index.js"
   },
@@ -20,8 +20,14 @@
   "homepage": "https://github.com/ns8279/Receipe_Blog#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "connect-session-sequelize": "^6.1.1",
     "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "express-session": "^1.17.1",
     "mysql2": "^2.1.0",
     "sequelize": "^5.21.13"
+  },
+  "devDependencies": {
+    "jest": "^26.1.0"
   }
 }
