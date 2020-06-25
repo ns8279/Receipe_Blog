@@ -1,0 +1,22 @@
+<div>
+    <h1>Dashboard</h1>
+</div>
+
+
+<div class = "container">
+    <div>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#recipe-creation-modal">New Recipe</button>
+    </div>
+    <div class = "row">
+        {{#each recipes as |recipe|}}
+        <div class = "col-lg-4">
+            {{> card-info recipe}}
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+{{> create-recipe-modal }}
+
+<script src = "/javascript/recipe-creation-modal.js"></script>
+

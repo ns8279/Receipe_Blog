@@ -1,0 +1,47 @@
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="recipe-creation-modal" tabindex="-1" role="dialog"
+  aria-labelledby="recipe-creation-modal-title" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="recipe-creation-modal-title">Create New Recipe</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label for="recipe_name">Recipe Name</label>
+            <input type="text" class="form-control" id="recipe_name" placeholder="Enter Recipe Name">
+          </div>
+
+        <div class="form-group">
+            <label for="prep_time">Prep Time</label>
+            <input type="text" class="form-control" id="prep_time" placeholder="Enter Prep Time">
+          </div>
+        
+        <div class="form-group">
+            <label for="cook_time">Cook Time</label>
+            <input type="text" class="form-control" id="cook_time" placeholder="Enter Cook Time">
+          </div>
+        
+        <div class="form-group">
+            <label for="recipe_method">Recipe Method</label>
+            <input type="text" class="form-control" id="recipe_method" placeholder="Enter Recipe Method">
+          </div>
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="create-recipe" type="submit" class="btn btn-primary">Submit</button>
+
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/javascript/modal.js"></script>

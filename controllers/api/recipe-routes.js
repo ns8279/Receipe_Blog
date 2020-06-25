@@ -122,18 +122,17 @@ router.get('/:id', (req, res) => {
 
 router.post('/', withAuth, (req, res) => {
     Recipe.create({
-            //title: req.body.title,
-            recipe_name: req.body.recipe_name,
-            prep_time: req.body.prep_time,
-            cook_time: req.body.cook_time,
-            recipe_method: req.body.recipe_method,
-            user_id: req.session.user_id
-        })
-        .then(dbRecipeData => res.json(dbRecipeData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+        recipe_name: req.body.recipe_name,
+        prep_time: req.body.prep_time,
+        cook_time: req.body.cook_time,
+        recipe_method: req.body.recipe_method,
+        user_id: req.session.user_id
+    })
+    .then(dbRecipeData => res.json(dbRecipeData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 router.put('/:id', withAuth, (req, res) => {
