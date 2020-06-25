@@ -1,1 +1,1 @@
-$('#exampleModalLong').modal();
+$('#recipe-creation-modal').modal();
