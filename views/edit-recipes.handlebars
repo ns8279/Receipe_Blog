@@ -1,0 +1,43 @@
+<article class = "mx-5 my-5">
+    <a href ="/dashboard"> &larr; Back to dashboard</a>
+
+    <h2>
+        Edit Recipe
+    </h2>
+
+<form class ="edit-recipe-form"> 
+    <div class="form-group edit-recipe-form">
+      <input type="text" class="form-control edit-recipe-form" id="recipe-name" name = "recipe-name" value = "{{recipe.recipe_name}}">
+      <input type="text" class = "form-control edit-recipe-form my-5" id = "recipe-method" name="recipe-method" value = "{{recipe.recipe_method}}">
+    </div>
+    <div class ="edit-recipe-form">
+      <div class="card-body edit-recipe-form">
+          <a href="/recipe/{{recipe.id}}" class="btn btn-primary">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+          <button type = "submit" class = "btn btn-primary" id ="save">Save</button>
+          <button type ="button" class ="btn btn-primary delete-recipe-btn">Delete</button>
+      </div>
+    </div>
+</form>
+</article>
+
+
+<form class =" comment-form mx-5 my-5">
+  <div class="form-group">
+    <textarea name ="comment-body"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">add comment</button>
+</form>
+
+
+{{#each recipe.comments}}
+<div class="card text-white bg-dark w-75 mx-5 my-5">
+  <div class="card-body">
+    <h5 class="card-title text-white">{{user.username}} on {{format_date created_at}}</h5>
+    <p class="card-text text-white">{{comment_text}}</p>
+  </div>
+</div>
+{{/each}}
+
+<script src="/javascript/edit-recipe.js"></script>
+<script src="/javascript/delete-recipe.js"></script>
+<script src="/javascript/comment.js"></script>

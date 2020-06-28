@@ -53,6 +53,11 @@ Recipe.init(
 
         total_calories: {
             type: DataTypes.STRING,
+        },
+
+        items: {
+            type: DataTypes.TEXT,
+            allowNull: false
         }
 
         // pic: { 
