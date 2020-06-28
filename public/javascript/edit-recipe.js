@@ -8,19 +8,19 @@ async function editFormHandler(event) {
     ];
     const response = await fetch(`/api/recipes/${id}`, {
         method: 'PUT',
-        body: JSON.stringify({
-            
-            recipe_name,
-            
+
+        body: JSON.stringify({ 
+            recipe_name,    
             recipe_method
         }),
+
         header: {
             'Content-Type': 'application/json'
         }
     });
-
     if(response.ok) {
-        document.location.replace('/dashboard/');
+        document.location.replace('/dashboard');
+        // res.redirect('/dashboard');
     } else {
         alert(response.statusText);
     }
