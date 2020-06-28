@@ -17,7 +17,7 @@ The Recipe Blog is a blog website where users can publish their recipes and comm
 
 ## Deployed Application 
 
-[Recipe Blog](https://frozen-peak-90868.herokuapp.com/)
+[Recipe Blog](https://infinite-shelf-13445.herokuapp.com/)
 ![Alt text](./public/preview.png?raw=true "Title")
 
 
