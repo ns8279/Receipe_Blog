@@ -151,7 +151,7 @@ router.put('/:id', withAuth, (req, res) => {
         });
 });
 
-router.delete('/:id', (req,res)=>{
+router.delete('/:id', withAuth, (req,res)=>{
     Recipe.destroy({
         where: {
             id: req.params.id
