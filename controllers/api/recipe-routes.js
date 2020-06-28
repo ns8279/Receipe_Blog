@@ -7,12 +7,11 @@ router.get('/', (req, res) => {
     Recipe.findAll({
             attributes: [
                 'id',
-                //'title',
                 'recipe_name',
                 'prep_time',
                 'cook_time',
-                //'pic',
-                'created_at'
+                'created_at',
+                'items'
             ],
             order: [
                 ['created_at', 'DESC']
@@ -44,10 +43,6 @@ router.get('/', (req, res) => {
                         'quantity',
                         'created_at'
                     ],
-                    // include: {
-                    //     model: User,
-                    //     attributes: ['username']
-                    // }
                 }
             ]
         })
@@ -70,7 +65,8 @@ router.get('/:id', (req, res) => {
                 'prep_time',
                 'cook_time',
                 //'pic',
-                'created_at'
+                'created_at',
+                'items'
             ],
             include: [{
                     model: User,
@@ -85,10 +81,7 @@ router.get('/:id', (req, res) => {
                         'quantity',
                         'created_at'
                     ]
-                    // include: {
-                    //     model: User,
-                    //     attributes: ['username']
-                    // }
+                    
                 },
                 {
                     model: Comment,
@@ -126,6 +119,7 @@ router.post('/', withAuth, (req, res) => {
         prep_time: req.body.prep_time,
         cook_time: req.body.cook_time,
         recipe_method: req.body.recipe_method,
+        items: req.body.items,
         user_id: req.session.user_id
     })
     .then(dbRecipeData => res.json(dbRecipeData))
@@ -137,10 +131,7 @@ router.post('/', withAuth, (req, res) => {
 
 router.put('/:id', withAuth, (req, res) => {
     Recipe.update({
-            //title: req.body.title,
             recipe_name: req.body.recipe_name,
-            prep_time: req.body.prep_time,
-            cook_time: req.body.cook_time,
             recipe_method: req.body.recipe_method
         }, {
             where: {
@@ -160,23 +151,25 @@ router.put('/:id', withAuth, (req, res) => {
         });
 });
 
-router.delete('/:id', withAuth, (req, res) => {
+router.delete('/:id', (req,res)=>{
     Recipe.destroy({
-            where: {
-                id: req.params.id
-            }
-        })
-        .then(dbRecipeData => {
-            if (!dbRecipeData) {
-                res.status(404).json({ message: 'There was no recipe found with this id' });
-                return;
-            }
-            res.json(dbRecipeData);
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbRecipeData => {
+        if(!dbRecipeData){
+            res.status(404).json({ message: 'No such post found' });
+            return;
+        }
+        res.json(dbRecipeData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+    
 });
+
 
 module.exports = router;

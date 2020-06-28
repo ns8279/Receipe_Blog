@@ -1,19 +1,43 @@
-<div>
-    <h1>Dashboard</h1>
-</div>
+
 
 
 <div class = "container">
-    <div>
-        <button class="btn btn-primary" data-toggle="modal" data-target="#recipe-creation-modal">New Recipe</button>
-    </div>
-    <div class = "row">
-        {{#each recipes as |recipe|}}
-        <div class = "col-lg-4">
-            {{> card-info recipe}}
+    
+    <div class = "row mx-5 my-5">
+        <div class = "col-lg-12">
+             <h1>Dashboard</h1>
+             
+             <div>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#recipe-creation-modal">New Recipe</button>
+            </div>
+            <hr>
         </div>
-        {{/each}}
+
+       
+        <div class = "row">
+             {{#each recipes as |recipe|}}
+                <div class = "col-lg-4 mx-5 my-5">
+                {{> card-info recipe}}
+                <div class="card text-white bg-info mb-3 mx-5 my-5" style="width: 18rem;">
+                    <div class="card-header bg-dark text-white">{{user.username}}</div> 
+                         <div class="card-body text-white">
+                            <h5 class="card-title">{{recipe_name}}</h5>
+                                 <p class="card-text">{{category.category_name}}</p>
+                                 <a href="/recipe/{{id}}" class="btn btn-dark">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+                                 <a href="/recipes/{{id}}" class="btn btn-dark"  data-toggle=" modal" data-target="#exampleModalLong">Recipe</a>
+                                 <a href ="/dashboard/edit/{{recipe.id}}" class ="btn btn-primary edit-link">Edit Recipe</a>
+                                    <div class="card-footer">
+                                         <small class="text-white">Last updated {{format_date created_at}}</small>
+                                     </div>
+                         </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+         
+
     </div>
+       
 </div>
 
 {{> create-recipe-modal }}
