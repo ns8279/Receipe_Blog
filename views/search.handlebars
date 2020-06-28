@@ -1,11 +1,18 @@
 <div class = "container">
     <div class = "row">
         {{#each recipes as |recipe|}}
+
         <div class = "col-lg-4">
-            {{> card-info recipe}}
+            <div class="card text-white bg-info mb-3 mx-5 my-5" style="width: 18rem;">
+                <div class="card-body text-white">
+                    <h5 class="card-title">{{recipe.recipe_name}}</h5>
+                     <a href="/recipes/{{id}}" class="btn btn-dark"  data-toggle=" modal" data-target="#exampleModalLong">Recipe</a>
+                    <div class="card-footer">
+                        <small class="text-white">Last updated {{format_date recipe.created_at}}</small>
+                    </div>
+            </div>
+            </div>
         </div>
         {{/each}}
     </div>
 </div>
-
-<script src="/javascript/search.js"></script>

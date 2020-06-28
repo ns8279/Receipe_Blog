@@ -7,8 +7,8 @@ const { Op } = require('sequelize');
 // });
 
 router.get('/:recipe_name', (req,res) => {
-    Recipe.findOne({
-        //limit: 10,
+    Recipe.findAll({
+        limit: 10,
         where: {
             recipe_name: {
                 [Op.like]: '%' + req.params.recipe_name + '%'
@@ -22,49 +22,17 @@ router.get('/:recipe_name', (req,res) => {
             'cook_time',
             'created_at',
             'items'
-        ],
-
-        include: [
-            {
-                model: User,
-                attributes: ['username']
-            },
-
-            {
-                model: Category,
-                attributes: ['category_name']
-            },
-
-            {
-                model: Comment,
-                attributes: [
-                    'id',
-                    'comment_text',
-                    'recipe_id',
-                    'user_id',
-                    'created_at'
-                ],
-                include: {
-                    model: User,
-                    attributes: ['username']
-                }
-            }
-  
         ]
 
     })
     .then(dbSearchData => {
-        if (!dbSearchData) {
-            res.status(404).json({ message: 'There was no recipe found with this name' });
-            return;
-        }
-        //serialize the data
-        const recipe = dbSearchData.get({ plain: true });
-        console.log(recipe);
-
-        //pasa data to template
-        res.render('search', { recipe });
+        const recipes = dbSearchData.map(recipe => recipe.get({ plain: true }));
+        res.render('search', { recipes }); 
     })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 })
 
 module.exports = router;
