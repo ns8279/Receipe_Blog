@@ -60,10 +60,7 @@ Recipe.init(
             allowNull: false
         }
 
-        // pic: { 
-        //     type: Sequelize.BLOB,
-        //     allowNull: true
-        // }
+        
   
     },
 
